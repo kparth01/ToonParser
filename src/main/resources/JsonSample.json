@@ -1,0 +1,305 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "user": "Aarav Sharma",
+      "occupation": "Software Engineer",
+      "department": "Technology",
+      "info": {
+        "age": 28,
+        "address": {
+          "street": "12 MG Road",
+          "city": "Bengaluru",
+          "country": "India",
+          "geo": { "lat": 12.9716, "lng": 77.5946 }
+        },
+        "devices": [
+          { "type": "laptop", "brand": "Apple", "model": "MacBook Pro 14" },
+          { "type": "phone", "brand": "Samsung", "model": "S23" }
+        ],
+        "preferences": {
+          "languages": ["Java", "Kotlin", "TypeScript"],
+          "themes": { "editor": "dark", "terminal": "solarized" }
+        },
+        "security": {
+          "2fa_enabled": true,
+          "last_login": "2025-11-10T14:22:00Z",
+          "password_last_changed": "2025-05-12"
+        },
+        "employment_history": [
+          { "company": "TCS", "years": 2 },
+          { "company": "Infosys", "years": 3 }
+        ],
+        "socials": {
+          "github": "aaravsharma",
+          "linkedin": "aarav-sharma"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "user": "Meera Patel",
+      "occupation": "Data Analyst",
+      "department": "Business Intelligence",
+      "info": {
+        "age": 31,
+        "address": {
+          "street": "88 Nehru Street",
+          "city": "Mumbai",
+          "country": "India",
+          "geo": { "lat": 19.0760, "lng": 72.8777 }
+        },
+        "devices": [
+          { "type": "laptop", "brand": "Dell", "model": "XPS 13" }
+        ],
+        "preferences": {
+          "tools": ["PowerBI", "Tableau", "Excel"],
+          "data_sources": ["SQL", "Snowflake"],
+          "dashboard_style": "minimal"
+        },
+        "security": {
+          "2fa_enabled": false,
+          "last_login": "2025-11-12T09:10:00Z",
+          "password_last_changed": "2024-12-20"
+        },
+        "employment_history": [
+          { "company": "Accenture", "years": 4 }
+        ],
+        "socials": {
+          "linkedin": "meerapatel",
+          "medium": "meera-data"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "user": "Kabir Verma",
+      "occupation": "Product Manager",
+      "department": "Product",
+      "info": {
+        "age": 35,
+        "address": {
+          "street": "22 Palm Residency",
+          "city": "Pune",
+          "country": "India",
+          "geo": { "lat": 18.5204, "lng": 73.8567 }
+        },
+        "preferences": {
+          "methodologies": ["Agile", "Scrum"],
+          "tools": ["Jira", "Notion", "Figma"]
+        },
+        "devices": [
+          { "type": "tablet", "brand": "Apple", "model": "iPad Air" }
+        ],
+        "security": {
+          "2fa_enabled": true,
+          "last_login": "2025-11-15T13:40:00Z"
+        },
+        "employment_history": [
+          { "company": "Flipkart", "years": 3 },
+          { "company": "Swiggy", "years": 2 }
+        ],
+        "socials": {
+          "linkedin": "kabir-verma",
+          "twitter": "@kabirpm"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "user": "Ananya Rao",
+      "occupation": "UX Designer",
+      "department": "Design",
+      "info": {
+        "age": 26,
+        "address": {
+          "street": "Plot 55, Jubilee Hills",
+          "city": "Hyderabad",
+          "country": "India",
+          "geo": { "lat": 17.3850, "lng": 78.4867 }
+        },
+        "preferences": {
+          "tools": ["Figma", "Adobe XD"],
+          "design_style": "modern",
+          "themes": { "workspace_ui": "pastel" }
+        },
+        "devices": [
+          { "type": "laptop", "brand": "HP", "model": "Spectre x360" }
+        ],
+        "security": {
+          "2fa_enabled": true,
+          "last_login": "2025-11-14T11:05:00Z"
+        },
+        "socials": {
+          "dribbble": "ananyarao",
+          "behance": "ananya.designs"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "user": "Rohan Gupta",
+      "occupation": "DevOps Engineer",
+      "department": "Infrastructure",
+      "info": {
+        "age": 29,
+        "address": {
+          "street": "Tech Valley",
+          "city": "Gurgaon",
+          "country": "India",
+          "geo": { "lat": 28.4595, "lng": 77.0266 }
+        },
+        "preferences": {
+          "cloud": ["AWS", "GCP"],
+          "ci_cd": ["GitHub Actions", "Jenkins"],
+          "monitoring": ["Prometheus", "Grafana"]
+        },
+        "devices": [
+          { "type": "laptop", "brand": "Lenovo", "model": "ThinkPad X1" }
+        ],
+        "security": {
+          "2fa_enabled": true,
+          "ssh_keys": ["rohan-main", "rohan-backup"]
+        },
+        "employment_history": [
+          { "company": "HCL", "years": 3 }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "user": "Sara Nair",
+      "occupation": "HR Manager",
+      "department": "Human Resources",
+      "info": {
+        "age": 33,
+        "address": {
+          "street": "Green Park",
+          "city": "Delhi",
+          "country": "India",
+          "geo": { "lat": 28.6139, "lng": 77.2090 }
+        },
+        "preferences": {
+          "communication_tools": ["Slack", "Teams"],
+          "hiring_platforms": ["LinkedIn", "Naukri"]
+        },
+        "devices": [
+          { "type": "phone", "brand": "Apple", "model": "iPhone 14" }
+        ],
+        "employment_history": [
+          { "company": "Wipro", "years": 5 }
+        ],
+        "socials": {
+          "linkedin": "saranair"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "user": "Vikram Singh",
+      "occupation": "QA Engineer",
+      "department": "Quality Assurance",
+      "info": {
+        "age": 30,
+        "address": {
+          "street": "Sector 20",
+          "city": "Noida",
+          "country": "India",
+          "geo": { "lat": 28.5355, "lng": 77.3910 }
+        },
+        "preferences": {
+          "testing_tools": ["Selenium", "Playwright"],
+          "bug_tracking": "Jira"
+        },
+        "devices": [
+          { "type": "laptop", "brand": "Acer", "model": "Swift 5" }
+        ],
+        "employment_history": [
+          { "company": "Tech Mahindra", "years": 4 }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "user": "Ishita Mehta",
+      "occupation": "Marketing Specialist",
+      "department": "Marketing",
+      "info": {
+        "age": 27,
+        "address": {
+          "street": "Ring Road",
+          "city": "Ahmedabad",
+          "country": "India",
+          "geo": { "lat": 23.0225, "lng": 72.5714 }
+        },
+        "preferences": {
+          "social_media": ["Instagram", "LinkedIn"],
+          "ads": ["Google Ads", "Meta Ads"]
+        },
+        "employment_history": [
+          { "company": "Zomato", "years": 2 }
+        ],
+        "socials": {
+          "instagram": "ishita.markets"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "user": "Yusuf Khan",
+      "occupation": "Database Administrator",
+      "department": "Data",
+      "info": {
+        "age": 38,
+        "address": {
+          "street": "Lake View",
+          "city": "Chennai",
+          "country": "India",
+          "geo": { "lat": 13.0827, "lng": 80.2707 }
+        },
+        "preferences": {
+          "databases": ["PostgreSQL", "Oracle"],
+          "backup_policy": "daily-incremental"
+        },
+        "devices": [
+          { "type": "laptop", "brand": "Dell", "model": "Latitude 7420" }
+        ],
+        "employment_history": [
+          { "company": "Sony India", "years": 6 }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "user": "Neha Kapoor",
+      "occupation": "AI Researcher",
+      "department": "R&D",
+      "info": {
+        "age": 32,
+        "address": {
+          "street": "AI Heights",
+          "city": "Bengaluru",
+          "country": "India",
+          "geo": { "lat": 12.9716, "lng": 77.5946 }
+        },
+        "preferences": {
+          "models": ["GPT", "Llama", "Mistral"],
+          "frameworks": ["PyTorch", "TensorFlow"],
+          "datasets": ["ImageNet", "COCO"]
+        },
+        "devices": [
+          { "type": "workstation", "gpu": "RTX 4090", "ram_gb": 128 }
+        ],
+        "research_topics": [
+          "NLP",
+          "Multimodal Models",
+          "Model Optimization"
+        ],
+        "socials": {
+          "github": "neha-ai",
+          "linkedin": "neha-kapoor-ai"
+        }
+      }
+    }
+  ]
+}
