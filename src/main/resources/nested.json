@@ -1,0 +1,28 @@
+[
+  {
+    "company": "TechCorp d1",
+    "location": "San Francisco",
+    "departments": [
+      {
+        "name": "Engineering d2",
+        "employees": [
+          { "name": "John d3", "role": "Developer" },
+          { "name": "Jane", "role": "Tester" }
+        ]
+      }
+    ]
+  },
+  {
+    "company": "BizSolutions",
+    "location": "Chicago",
+    "departments": [
+      {
+        "name": "Marketing",
+        "employees": [
+          { "name": "Tom", "role": "Manager" },
+          { "name": "Lucy", "role": "Executive" }
+        ]
+      }
+    ]
+  }
+]

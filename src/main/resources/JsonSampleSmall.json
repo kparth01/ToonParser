@@ -1,98 +1,23 @@
 {
   "users": [
     {
-      "id": 1, //depth 1
-      "user": "Aarav Sharma",
-      "occupation": "Software Engineer",
-      "department": "Technology",
+      "id": 1,
       "info": {
-        "age": 28, //depth 2
-        "address": {
-          "street": "12 MG Road", //depth 3
-          "city": "Bengaluru",
-          "country": "India",
-          "geo": {
-            "lat": 12.9716, //depth 4
-            "lng": 77.5946
-          }
-        },
-        "devices": [
-          { "type": "laptop", //depth 3
-            "brand": "Apple",
-            "model": "MacBook Pro 14" },
-          { "type": "phone",
-            "brand": "Samsung",
-            "model": "S23" }
-        ],
-        "preferences": {
-          "languages": ["Java", "Kotlin", "TypeScript"],
-          "themes": { "editor": "dark", "terminal": "solarized" }
-        },
-        "security": {
-          "2fa_enabled": true,
-          "last_login": "2025-11-10T14:22:00Z",
-          "password_last_changed": "2025-05-12"
-        },
-        "employment_history": [
-          { "company": "TCS", "years": 2 },
-          { "company": "Infosys", "years": 3 }
-        ],
-        "socials": {
-          "github": "aaravsharma",
-          "linkedin": "aarav-sharma"
-        }
+        "age": 28,
+        "employees": [
+          { "name": "John d3", "role": "Developer" },
+          { "name": "Jane", "role": "Tester" }
+        ]
       }
     },
     {
       "id": 2,
-      "user": "Meera Patel",
-      "occupation": "Data Analyst",
-      "department": "Business Intelligence",
       "info": {
         "age": 31,
-        "address": {
-          "street": "88 Nehru Street",
-          "city": "Mumbai",
-          "country": "India",
-          "geo": {
-            "lat": 19.0760,
-            "lng": 72.8777
-          }
-        },
-        "devices": [
-          {
-            "type": "laptop",
-            "brand": "Dell",
-            "model": "XPS 13"
-          }
-        ],
-        "preferences": {
-          "tools": [
-            "PowerBI",
-            "Tableau",
-            "Excel"
-          ],
-          "data_sources": [
-            "SQL",
-            "Snowflake"
-          ],
-          "dashboard_style": "minimal"
-        },
-        "security": {
-          "2fa_enabled": false,
-          "last_login": "2025-11-12T09:10:00Z",
-          "password_last_changed": "2024-12-20"
-        },
-        "employment_history": [
-          {
-            "company": "Accenture",
-            "years": 4
-          }
-        ],
-        "socials": {
-          "linkedin": "meerapatel",
-          "medium": "meera-data"
-        }
+        "employees": [
+          { "name": "John d3", "role": "Developer" },
+          { "name": "Jane", "role": "Tester" }
+        ]
       }
     }
   ]

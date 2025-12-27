@@ -1,10 +1,19 @@
-package com.toonparser.parser;
+package com.toonparser.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParseContext {
-    List<String> output = new ArrayList<>();
+    List<String> output = null;
+    public ParseContext() {
+        this.output = new ArrayList<>(1);
+    }
 
-    public ParseContext() {}
+    public List<String> getOutput() {
+        return this.output;
+    }
+
+    public void add(String output) {
+        this.output.add(output);
+    }
 }

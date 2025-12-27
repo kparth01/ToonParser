@@ -1,0 +1,12 @@
+{
+  "productId": 101,
+  "name": "Laptop",
+  "price": 1200.5,
+  "available": true,
+  "tags": ["electronics", "computers"],
+  "specs": {
+    "cpu": "Intel i7",
+    "ram": "16GB",
+    "warranty": null
+  }
+}

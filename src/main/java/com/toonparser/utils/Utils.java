@@ -30,7 +30,7 @@ public class Utils {
                     }
 
                     // check if property is not primitive type
-                    boolean isNotPrimitive = !(isPrimitiveType(lvEntry));
+                    boolean isNotPrimitive = !(isMapValuePrimitiveType(lvEntry));
                     if (isNotPrimitive) return true;
                 }
             }
@@ -76,14 +76,17 @@ public class Utils {
                 IConstants.INDENT.repeat(Math.max(0, dashLevel));
     }
 
-    public static boolean isPrimitiveType(Map.Entry entry) {
-        return entry.getValue() != null && (entry.getValue() instanceof String
-                || entry.getValue() instanceof Integer
-                || entry.getValue() instanceof Boolean
-                || entry.getValue() instanceof Double
-                || entry.getValue() instanceof Float
+    public static boolean isMapValuePrimitiveType(Map.Entry entry) {
+        return entry.getValue() != null && (entry.getValue() instanceof Boolean
                 || entry.getValue() instanceof Character
                 || entry.getValue() instanceof CharSequence
                 || entry.getValue() instanceof Number);
+    }
+
+    public static boolean isObjectPrimitiveType(Object o) {
+        return ((o instanceof Boolean)
+                || (o instanceof Character)
+                || (o instanceof CharSequence)
+                || (o instanceof Number));
     }
 }

@@ -1,4 +1,4 @@
-package com.toonparser.parser;
+package com.toonparser.model;
 import java.util.Collections;
 import java.util.List;
 
