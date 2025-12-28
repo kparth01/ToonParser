@@ -90,6 +90,10 @@ public class ListHandler {
                 new NodeDispatcher().dispatch(lv, ctx,
                         depth, dashLevel, nonUniformArray, false);
                 depth--;
+            } else if (list.get(i) instanceof List) {
+                List li = (List) list.get(i);
+                new NodeDispatcher().dispatch(li, ctx,
+                        depth, dashLevel, nonUniformArray, true);
             }
         }
     }
