@@ -22,6 +22,7 @@ public class ListHandler {
                 .append("]");
 
         boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(listOfItems);
+        boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(listOfItems);
 
         if (arrayIsNonUniform) {
             sb1.append(IConstants.SEMICOLON_SEPARATOR);
@@ -42,8 +43,10 @@ public class ListHandler {
         // Add header line to output
         ctx.add(sb1.toString());
 
-        handleNestedObjects(listOfItems, ctx, arrayIsNonUniform,
-                depth, dashLevel);
+        if (!listValueIsPrimitiveType) {
+             handleNestedObjects(listOfItems, ctx, arrayIsNonUniform,
+                    depth, dashLevel);
+        }
     }
 
     static void handle(List<?> list, ParseContext ctx,
@@ -55,17 +58,20 @@ public class ListHandler {
                 .append("]")
                 .append(IConstants.SEMICOLON_SEPARATOR);
 
+        boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(list);
+        boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(list);
+
         // Handle primitive lists
-        if (Utils.checkIfListValueIsPrimitiveType(list)) {
+        if (listValueIsPrimitiveType) {
             appendPrimitiveList(list, sb);
         }
 
         ctx.add(sb.toString());
 
-        boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(list);
-
-        handleNestedObjects(list, ctx, arrayIsNonUniform,
-                depth, dashLevel);
+        if (!listValueIsPrimitiveType) {
+            handleNestedObjects(list, ctx, arrayIsNonUniform,
+                    depth, dashLevel);
+        }
 
     }
 

@@ -15,6 +15,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        processFile("allkind.json");
         processFile("flat.json");
         processFile("lang.json");
         processFile("nested.json");

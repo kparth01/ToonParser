@@ -40,22 +40,20 @@ public class Utils {
     }
 
     public static boolean checkIfListValueIsPrimitiveType(List<?> input) {
+        if (input == null || input.isEmpty())  return true;
         for (Object o : input) {
-            if ((o instanceof Boolean)
-                    || (o instanceof Character)
-                    || (o instanceof CharSequence)
-                    || (o instanceof Number)) {
-                return true;
+            if (o == null) continue;
+            if (!isObjectPrimitiveType(o)) {
+                return false;
             }
         }
-
-        return false;
+        return true;
     }
 
     @SuppressWarnings("unchecked")
     public static String extractHeaders(List<?> input) {
         StringBuilder sb = new StringBuilder();
-        if (input.get(0) instanceof Map) {
+        if (!input.isEmpty() && (input.get(0) instanceof Map)) {
             Map<String, Object> lv = (Map<String, Object>) input.get(0);
             int count = 0;
             for (Map.Entry entry : lv.entrySet()) {
@@ -77,14 +75,14 @@ public class Utils {
     }
 
     public static boolean isMapValuePrimitiveType(Map.Entry entry) {
-        return entry.getValue() != null && (entry.getValue() instanceof Boolean
+        return (entry.getValue() == null || (entry.getValue() instanceof Boolean
                 || entry.getValue() instanceof Character
                 || entry.getValue() instanceof CharSequence
-                || entry.getValue() instanceof Number);
+                || entry.getValue() instanceof Number));
     }
 
     public static boolean isObjectPrimitiveType(Object o) {
-        return ((o instanceof Boolean)
+        return ((o == null) || (o instanceof Boolean)
                 || (o instanceof Character)
                 || (o instanceof CharSequence)
                 || (o instanceof Number));
