@@ -18,20 +18,20 @@ public class ListHandler {
         boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(listOfItems);
 
         // Build header line
-        if (listValueIsPrimitiveType) {
+//        if (listValueIsPrimitiveType) {
+//            sb.append(Utils.getIndent(depth, dashLevel))
+//                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
+//                    .append(entry.getKey())
+//                    .append("[")
+//                    .append(listOfItems.size())
+//                    .append("]");
+//        } else {
             sb.append(Utils.getIndent(depth, dashLevel))
-                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
                     .append(entry.getKey())
                     .append("[")
                     .append(listOfItems.size())
                     .append("]");
-        } else {
-            sb.append(Utils.getIndent(depth, dashLevel))
-                    .append(entry.getKey())
-                    .append("[")
-                    .append(listOfItems.size())
-                    .append("]");
-        }
+//        }
 
         if (arrayIsNonUniform) {
             sb.append(IConstants.SEMICOLON_SEPARATOR);
@@ -64,22 +64,22 @@ public class ListHandler {
 
         boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(list);
         boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(list);
-        boolean isMixedArrayWithPrimitive = Utils.isMixedArrayWithPrimitive(list);
+//        boolean isMixedArrayWithPrimitive = Utils.isMixedArrayWithPrimitive(list);
 
-        if (listValueIsPrimitiveType) {
+//        if (listValueIsPrimitiveType) {
+//            sb.append(Utils.getIndent(depth, dashLevel))
+//                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
+//                    .append("[")
+//                    .append(list.size())
+//                    .append("]")
+//                    .append(IConstants.SEMICOLON_SEPARATOR);
+//        } else {
             sb.append(Utils.getIndent(depth, dashLevel))
-                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
                     .append("[")
                     .append(list.size())
                     .append("]")
                     .append(IConstants.SEMICOLON_SEPARATOR);
-        } else {
-            sb.append(Utils.getIndent(depth, dashLevel))
-                    .append("[")
-                    .append(list.size())
-                    .append("]")
-                    .append(IConstants.SEMICOLON_SEPARATOR);
-        }
+//        }
 
 
         // Handle primitive lists
@@ -128,7 +128,7 @@ public class ListHandler {
                             depth + 1, dashLevel,
                             nonUniformArray, true, false);
                 } else {
-                    new NodeDispatcher().dispatch(nonUniformArray, ctx,
+                    new NodeDispatcher().dispatch(li, ctx,
                             depth + 1, dashLevel,
                             nonUniformArray, false, false);
                 }
