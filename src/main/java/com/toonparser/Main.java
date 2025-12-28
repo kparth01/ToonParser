@@ -16,14 +16,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         processFile("allkind.json");
-        processFile("flat.json");
-        processFile("lang.json");
-        processFile("nested.json");
-        processFile("toplevel.json");
-        processFile("Sample.json");
-        processFile("JsonSampleSmall.json");
-        processFile("JsonSample.json");
-
+//        processFile("flat.json");
+//        processFile("lang.json");
+//        processFile("nested.json");
+//        processFile("toplevel.json");
+//        processFile("Sample.json");
+//        processFile("JsonSampleSmall.json");
+//        processFile("JsonSample.json");
     }
 
     private static void processFile(String fileName) throws IOException {

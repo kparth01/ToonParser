@@ -20,7 +20,7 @@ public class MapHandler {
         boolean isKeyValue = true;
         // parse(obMap, ctx.depth, ctx.dashLevel, false, true);
         new NodeDispatcher().dispatch(obMap, ctx,
-                depth, dashLevel, nonUniformArray, isKeyValue);
+                depth, dashLevel, nonUniformArray, isKeyValue, false);
         --depth;
     }
 }

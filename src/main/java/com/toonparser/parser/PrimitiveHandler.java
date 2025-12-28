@@ -17,12 +17,13 @@ public class PrimitiveHandler {
                        Integer depth, Integer dashLevel,
                        boolean nonUniformArray,
                        boolean isKeyValue,
-                       Integer count) {
+                       Integer count,
+                        boolean rootElement) {
         Map<String, Integer> result = new HashMap<>();
         if (isKeyValue) {
             formatKeyValue(entry, ctx,  depth, dashLevel);
         } else if (nonUniformArray) {
-            result = formatNonUniformArray(entry, ctx, inputMapSize, sb, depth, dashLevel, count);
+            result = formatNonUniformArray(entry, ctx, inputMapSize, sb, depth, dashLevel, count, rootElement);
         } else {
             result = formatInline(entry, ctx, inputMapSize, sb, depth, dashLevel, count);
         }
@@ -45,9 +46,9 @@ public class PrimitiveHandler {
                                               StringBuilder sb,
                                               Integer depth,
                                               Integer dashLevel,
-                                              Integer count) {
+                                              Integer count, boolean rootElement) {
         sb.append(Utils.getIndent(depth, dashLevel));
-        if (Objects.equals(count, inputMapSize)) {
+        if (Objects.equals(count, inputMapSize) && !rootElement) {
             sb.append(IConstants.DASH).append(" ");
             dashLevel = dashLevel + 1;
         }

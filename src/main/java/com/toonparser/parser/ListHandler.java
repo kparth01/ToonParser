@@ -12,39 +12,48 @@ public class ListHandler {
     static void handle(Map.Entry<String, Object> entry, ParseContext ctx,
                        Integer depth, Integer dashLevel) {
         List listOfItems = (List) entry.getValue();
-        StringBuilder sb1 = new StringBuilder();
-
-        // Build header line
-        sb1.append(Utils.getIndent(depth, dashLevel))
-                .append(entry.getKey())
-                .append("[")
-                .append(listOfItems.size())
-                .append("]");
+        StringBuilder sb = new StringBuilder();
 
         boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(listOfItems);
         boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(listOfItems);
 
+        // Build header line
+        if (listValueIsPrimitiveType) {
+            sb.append(Utils.getIndent(depth, dashLevel))
+                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
+                    .append(entry.getKey())
+                    .append("[")
+                    .append(listOfItems.size())
+                    .append("]");
+        } else {
+            sb.append(Utils.getIndent(depth, dashLevel))
+                    .append(entry.getKey())
+                    .append("[")
+                    .append(listOfItems.size())
+                    .append("]");
+        }
+
         if (arrayIsNonUniform) {
-            sb1.append(IConstants.SEMICOLON_SEPARATOR);
+            sb.append(IConstants.SEMICOLON_SEPARATOR);
         } else {
             String headers = Utils.extractHeaders(listOfItems);
             if (!headers.isEmpty()) {
-                sb1.append("{").append(headers).append("}").append(IConstants.SEMICOLON_SEPARATOR);
+                sb.append("{").append(headers).append("}").append(IConstants.SEMICOLON_SEPARATOR);
             } else {
-                sb1.append(IConstants.SEMICOLON_SEPARATOR);
+                sb.append(IConstants.SEMICOLON_SEPARATOR);
             }
         }
 
         // Handle primitive lists
-        if (Utils.checkIfListValueIsPrimitiveType(listOfItems)) {
-            appendPrimitiveList(listOfItems, sb1);
+        if (listValueIsPrimitiveType) {
+            appendPrimitiveList(listOfItems, sb);
         }
 
         // Add header line to output
-        ctx.add(sb1.toString());
+        ctx.add(sb.toString());
 
         if (!listValueIsPrimitiveType) {
-             handleNestedObjects(listOfItems, ctx, arrayIsNonUniform,
+            handleNestedObjects(listOfItems, ctx, arrayIsNonUniform,
                     depth, dashLevel);
         }
     }
@@ -52,14 +61,26 @@ public class ListHandler {
     static void handle(List<?> list, ParseContext ctx,
                        Integer depth, Integer dashLevel) {
         StringBuilder sb = new StringBuilder();
-        sb.append(Utils.getIndent(depth, dashLevel))
-                .append("[")
-                .append(list.size())
-                .append("]")
-                .append(IConstants.SEMICOLON_SEPARATOR);
 
         boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(list);
         boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(list);
+        boolean isMixedArrayWithPrimitive = Utils.isMixedArrayWithPrimitive(list);
+
+        if (listValueIsPrimitiveType) {
+            sb.append(Utils.getIndent(depth, dashLevel))
+                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
+                    .append("[")
+                    .append(list.size())
+                    .append("]")
+                    .append(IConstants.SEMICOLON_SEPARATOR);
+        } else {
+            sb.append(Utils.getIndent(depth, dashLevel))
+                    .append("[")
+                    .append(list.size())
+                    .append("]")
+                    .append(IConstants.SEMICOLON_SEPARATOR);
+        }
+
 
         // Handle primitive lists
         if (listValueIsPrimitiveType) {
@@ -69,10 +90,8 @@ public class ListHandler {
         ctx.add(sb.toString());
 
         if (!listValueIsPrimitiveType) {
-            handleNestedObjects(list, ctx, arrayIsNonUniform,
-                    depth, dashLevel);
+            handleNestedObjects(list, ctx, arrayIsNonUniform, depth, dashLevel);
         }
-
     }
 
     private static void appendPrimitiveList(List<?> listOfItems, StringBuilder sb) {
@@ -88,18 +107,38 @@ public class ListHandler {
     private static void handleNestedObjects(List list, ParseContext ctx, boolean nonUniformArray,
                                             Integer depth, Integer dashLevel) {
         // call same function with depth + 1
+        boolean isMixedArrayWithPrimitive = Utils.isMixedArrayWithPrimitive(list);
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof Map) {
                 Map<String, Object> lv = (Map<String, Object>) list.get(i);
-                depth = depth + 1;
                 //parse(lv, ctx.depth++, ctx.dashLevel, arrayIsNonUniform, false);
-                new NodeDispatcher().dispatch(lv, ctx,
-                        depth, dashLevel, nonUniformArray, false);
-                depth--;
+                if (!isMixedArrayWithPrimitive) {
+                    new NodeDispatcher().dispatch(lv, ctx,
+                            depth + 1, dashLevel, nonUniformArray,
+                            false, false);
+                } else {
+                    new NodeDispatcher().dispatch(lv, ctx,
+                            depth + 1, dashLevel,
+                            false, false, false);
+                }
             } else if (list.get(i) instanceof List) {
                 List li = (List) list.get(i);
-                new NodeDispatcher().dispatch(li, ctx,
-                        depth, dashLevel, nonUniformArray, true);
+                if (!isMixedArrayWithPrimitive) {
+                    new NodeDispatcher().dispatch(li, ctx,
+                            depth + 1, dashLevel,
+                            nonUniformArray, true, false);
+                } else {
+                    new NodeDispatcher().dispatch(nonUniformArray, ctx,
+                            depth + 1, dashLevel,
+                            nonUniformArray, false, false);
+                }
+
+            } else if (isMixedArrayWithPrimitive) {
+                if (Utils.isObjectPrimitiveType(list.get(i))) {
+                    ctx.add(Utils.getIndent(depth + 1, dashLevel)
+                            + IConstants.DASH + IConstants.EMPTY_SPACE
+                            + list.get(i));
+                }
             }
         }
     }

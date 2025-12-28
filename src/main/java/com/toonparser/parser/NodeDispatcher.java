@@ -13,9 +13,10 @@ public class NodeDispatcher {
                   Integer depth,
                   Integer dashLevel,
                   boolean nonUniformForPrimitive,
-                  boolean isKeyValue) {
+                  boolean isKeyValue,
+                  boolean rootElement) {
         if (input instanceof Map<?, ?>) {
-            parseMap((Map<String, Object>) input, ctx, depth, dashLevel, nonUniformForPrimitive, isKeyValue);
+            parseMap((Map<String, Object>) input, ctx, depth, dashLevel, nonUniformForPrimitive, isKeyValue, rootElement);
         }
         if (input instanceof List<?>) {
             parseList((List<?>) input, ctx, depth, dashLevel);
@@ -27,14 +28,15 @@ public class NodeDispatcher {
                           Integer depth,
                           Integer dashLevel,
                           boolean nonUniformForPrimitive,
-                          boolean isKeyValue) {
+                          boolean isKeyValue,
+                          boolean rootElement) {
         StringBuilder sb = new StringBuilder();
         Integer inputMapSize = map.size();
         int count = map.size();
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             if (Utils.isMapValuePrimitiveType(entry)) {
                 Map<String, Integer> result = PrimitiveHandler.handle(entry, ctx, inputMapSize, sb,
-                            depth, dashLevel, nonUniformForPrimitive, isKeyValue, count);
+                            depth, dashLevel, nonUniformForPrimitive, isKeyValue, count, rootElement);
                 count = result.getOrDefault("count", count);
                 dashLevel = result.getOrDefault("dashLevel", dashLevel);
             } else if (entry.getValue() instanceof List<?>) {

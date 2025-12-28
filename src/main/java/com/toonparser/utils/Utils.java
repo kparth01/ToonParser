@@ -1,13 +1,14 @@
 package com.toonparser.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Utils {
 
     private Utils() {
     }
+
+    private enum ElementKind { PRIMITIVE, MAP, LIST, OTHER }
+
 
     @SuppressWarnings("unchecked")
     public static boolean checkIfArrayIsNonUniform(List<?> input) {
@@ -38,6 +39,66 @@ public class Utils {
 
         return false;
     }
+
+    public static boolean isMixedArrayWithPrimitive(List<?> mixedArray) {
+        if (mixedArray == null || mixedArray.size() <= 1) return false;
+        EnumSet<ElementKind> primitiveList = EnumSet.noneOf(ElementKind.class);
+        EnumSet<ElementKind> nonPrimitiveList = EnumSet.noneOf(ElementKind.class);
+        for (Object ma : mixedArray) {
+            if (isObjectPrimitiveType(ma)) {
+                ElementKind k = classify(ma);
+                primitiveList.add(k);
+            } else {
+                ElementKind k = classify(ma);
+                nonPrimitiveList.add(k);            }
+        }
+        return !primitiveList.isEmpty() && !nonPrimitiveList.isEmpty();
+    }
+
+//    public static boolean checkIfArrayIsNonUniform2(List<?> list) {
+//        return checkIfArrayIsNonUniform2(list, false);
+//    }
+//
+//    public static boolean checkIfArrayIsNonUniform2(List<?> list, boolean treatDifferentMapKeysAsNonUniform) {
+//        if (list == null || list.size() <= 1) return false;
+//
+//        EnumSet<ElementKind> kinds = EnumSet.noneOf(ElementKind.class);
+//        Set<Set<String>> mapKeySets = treatDifferentMapKeysAsNonUniform ? new HashSet<>() : null;
+//
+//        for (Object item : list) {
+//            ElementKind k = classify(item);
+//            kinds.add(k);
+//
+//            if (k == ElementKind.MAP) {
+//                Map<?, ?> m = (Map<?, ?>) item;
+//                // capture key set as strings to compare structure
+//                Set<String> keys = new HashSet<>();
+//                for (Object key : m.keySet()) {
+//                    keys.add(String.valueOf(key));
+//                }
+//                mapKeySets.add(keys);
+//                if (mapKeySets.size() > 1) {
+//                    return true; // different map shapes -> non-uniform
+//                }
+//            }
+//        }
+//
+//        // different kind of values means non-uniform PRIMITIVE and MAP
+//        if (kinds.size() > 1) {
+//            return true;
+//        }
+//
+//        return false;
+//    }
+
+    private static ElementKind classify(Object o) {
+        if (o == null) return ElementKind.PRIMITIVE;
+        if (o instanceof Map) return ElementKind.MAP;
+        if (o instanceof List) return ElementKind.LIST;
+        if (isObjectPrimitiveType(o)) return ElementKind.PRIMITIVE;
+        return ElementKind.OTHER;
+    }
+
 
     public static boolean checkIfListValueIsPrimitiveType(List<?> input) {
         if (input == null || input.isEmpty())  return true;
