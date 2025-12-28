@@ -5,6 +5,10 @@
       "data": {
         "mixedArray": [
           "text",
+          42,
+          false,
+          null,
+          { "innerKey": "innerValue" },
           [10, 20]
         ]
       }

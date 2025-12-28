@@ -64,22 +64,22 @@ public class ListHandler {
 
         boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(list);
         boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(list);
-//        boolean isMixedArrayWithPrimitive = Utils.isMixedArrayWithPrimitive(list);
+        boolean isMixedArrayWithPrimitive = Utils.isMixedArrayWithPrimitive(list);
 
-//        if (listValueIsPrimitiveType) {
-//            sb.append(Utils.getIndent(depth, dashLevel))
-//                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
-//                    .append("[")
-//                    .append(list.size())
-//                    .append("]")
-//                    .append(IConstants.SEMICOLON_SEPARATOR);
-//        } else {
+        if (listValueIsPrimitiveType) {
+            sb.append(Utils.getIndent(depth, dashLevel))
+                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
+                    .append("[")
+                    .append(list.size())
+                    .append("]")
+                    .append(IConstants.SEMICOLON_SEPARATOR);
+        } else {
             sb.append(Utils.getIndent(depth, dashLevel))
                     .append("[")
                     .append(list.size())
                     .append("]")
                     .append(IConstants.SEMICOLON_SEPARATOR);
-//        }
+        }
 
 
         // Handle primitive lists
@@ -119,7 +119,7 @@ public class ListHandler {
                 } else {
                     new NodeDispatcher().dispatch(lv, ctx,
                             depth + 1, dashLevel,
-                            false, false, false);
+                            true, false, false);
                 }
             } else if (list.get(i) instanceof List) {
                 List li = (List) list.get(i);
