@@ -77,7 +77,7 @@ to `single-line.toon`
   }
 ]
 ```
-to `flat.json`
+to `flat.toon`
 
 ```TOON
 [2]{id,name,age,city}:
