@@ -55,42 +55,6 @@ public class Utils {
         return !primitiveList.isEmpty() && !nonPrimitiveList.isEmpty();
     }
 
-//    public static boolean checkIfArrayIsNonUniform2(List<?> list) {
-//        return checkIfArrayIsNonUniform2(list, false);
-//    }
-//
-//    public static boolean checkIfArrayIsNonUniform2(List<?> list, boolean treatDifferentMapKeysAsNonUniform) {
-//        if (list == null || list.size() <= 1) return false;
-//
-//        EnumSet<ElementKind> kinds = EnumSet.noneOf(ElementKind.class);
-//        Set<Set<String>> mapKeySets = treatDifferentMapKeysAsNonUniform ? new HashSet<>() : null;
-//
-//        for (Object item : list) {
-//            ElementKind k = classify(item);
-//            kinds.add(k);
-//
-//            if (k == ElementKind.MAP) {
-//                Map<?, ?> m = (Map<?, ?>) item;
-//                // capture key set as strings to compare structure
-//                Set<String> keys = new HashSet<>();
-//                for (Object key : m.keySet()) {
-//                    keys.add(String.valueOf(key));
-//                }
-//                mapKeySets.add(keys);
-//                if (mapKeySets.size() > 1) {
-//                    return true; // different map shapes -> non-uniform
-//                }
-//            }
-//        }
-//
-//        // different kind of values means non-uniform PRIMITIVE and MAP
-//        if (kinds.size() > 1) {
-//            return true;
-//        }
-//
-//        return false;
-//    }
-
     private static ElementKind classify(Object o) {
         if (o == null) return ElementKind.PRIMITIVE;
         if (o instanceof Map) return ElementKind.MAP;
