@@ -136,3 +136,7 @@ to `nested.toon`
           Tom,Manager
           Lucy,Executive
 ```
+
+## License
+
+[MIT](./LICENSE) License © 2025-PRESENT [Parth Kansara](https://github.com/kparth01)
