@@ -1,4 +1,4 @@
-# ToonParser Libray (for Token-Oriented Object Notation (TOON))
+# ToonParser Library (for Token-Oriented Object Notation (TOON))
 
 ![JsonToToon.png](JsonToToon.png)
 
