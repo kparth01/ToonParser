@@ -17,21 +17,11 @@ public class ListHandler {
         boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(listOfItems);
         boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(listOfItems);
 
-        // Build header line
-//        if (listValueIsPrimitiveType) {
-//            sb.append(Utils.getIndent(depth, dashLevel))
-//                    .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
-//                    .append(entry.getKey())
-//                    .append("[")
-//                    .append(listOfItems.size())
-//                    .append("]");
-//        } else {
-            sb.append(Utils.getIndent(depth, dashLevel))
-                    .append(entry.getKey())
-                    .append("[")
-                    .append(listOfItems.size())
-                    .append("]");
-//        }
+        sb.append(Utils.getIndent(depth, dashLevel))
+                .append(entry.getKey())
+                .append("[")
+                .append(listOfItems.size())
+                .append("]");
 
         if (arrayIsNonUniform) {
             sb.append(IConstants.SEMICOLON_SEPARATOR);
@@ -59,14 +49,13 @@ public class ListHandler {
     }
 
     static void handle(List<?> list, ParseContext ctx,
-                       Integer depth, Integer dashLevel) {
+                       Integer depth, Integer dashLevel, boolean rootElement) {
         StringBuilder sb = new StringBuilder();
 
         boolean arrayIsNonUniform = Utils.checkIfArrayIsNonUniform(list);
         boolean listValueIsPrimitiveType = Utils.checkIfListValueIsPrimitiveType(list);
-        boolean isMixedArrayWithPrimitive = Utils.isMixedArrayWithPrimitive(list);
 
-        if (listValueIsPrimitiveType) {
+        if (listValueIsPrimitiveType && !rootElement) {
             sb.append(Utils.getIndent(depth, dashLevel))
                     .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
                     .append("[")

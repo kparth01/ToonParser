@@ -19,7 +19,7 @@ public class NodeDispatcher {
             parseMap((Map<String, Object>) input, ctx, depth, dashLevel, nonUniformForPrimitive, isKeyValue, rootElement);
         }
         if (input instanceof List<?>) {
-            parseList((List<?>) input, ctx, depth, dashLevel);
+            parseList((List<?>) input, ctx, depth, dashLevel, rootElement);
         }
     }
 
@@ -49,7 +49,8 @@ public class NodeDispatcher {
 
     private void parseList(List<?> list,
                            ParseContext ctx,
-                           Integer depth, Integer dashLevel) {
-        ListHandler.handle(list, ctx, depth, dashLevel);
+                           Integer depth, Integer dashLevel,
+                           boolean rootElement) {
+        ListHandler.handle(list, ctx, depth, dashLevel, rootElement);
     }
 }
