@@ -14,15 +14,8 @@ public class Main {
     static final String FILEPATH = "/Users/parthkansara/Projects/Toon/Toon/src/main/resources/";
 
     public static void main(String[] args) throws IOException {
-
-        processFile("allkind.json");
-        processFile("flat.json");
-        processFile("lang.json");
-        processFile("nested.json");
-        processFile("toplevel.json");
-        processFile("Sample.json");
-        processFile("JsonSampleSmall.json");
-        processFile("JsonSample.json");
+        Toon toon = new Toon();
+        List<?> result2 = toon.parse(jsonOb);
     }
 
     private static void processFile(String fileName) throws IOException {

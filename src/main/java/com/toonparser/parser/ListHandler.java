@@ -60,14 +60,23 @@ public class ListHandler {
                     .append(IConstants.DASH).append(IConstants.EMPTY_SPACE)
                     .append("[")
                     .append(list.size())
-                    .append("]")
-                    .append(IConstants.SEMICOLON_SEPARATOR);
+                    .append("]");
         } else {
             sb.append(Utils.getIndent(depth, dashLevel))
                     .append("[")
                     .append(list.size())
-                    .append("]")
-                    .append(IConstants.SEMICOLON_SEPARATOR);
+                    .append("]");
+        }
+
+        if (arrayIsNonUniform) {
+            sb.append(IConstants.SEMICOLON_SEPARATOR);
+        } else {
+            String headers = Utils.extractHeaders(list);
+            if (!headers.isEmpty()) {
+                sb.append("{").append(headers).append("}").append(IConstants.SEMICOLON_SEPARATOR);
+            } else {
+                sb.append(IConstants.SEMICOLON_SEPARATOR);
+            }
         }
 
 
