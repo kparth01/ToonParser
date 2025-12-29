@@ -14,8 +14,15 @@ public class Main {
     static final String FILEPATH = "/Users/parthkansara/Projects/Toon/Toon/src/main/resources/";
 
     public static void main(String[] args) throws IOException {
-        Toon toon = new Toon();
-        List<?> result2 = toon.parse(jsonOb);
+
+        processFile("allkind.json");
+        processFile("flat.json");
+        processFile("lang.json");
+        processFile("nested.json");
+        processFile("toplevel.json");
+        processFile("Sample.json");
+        processFile("JsonSampleSmall.json");
+        processFile("JsonSample.json");
     }
 
     private static void processFile(String fileName) throws IOException {
@@ -30,7 +37,6 @@ public class Main {
             System.out.println("################## Toon API Refactored for List Filename: " + fileName + " ########################");
             List<?> result2 = toon.parse((List) jsonOb);
             result2.forEach(System.out::println);
-
         }
     }
 
